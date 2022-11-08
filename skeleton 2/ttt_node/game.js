@@ -1,6 +1,7 @@
 const Board = require("./board");
 const MoveError = require("./moveError");
 
+
 class Game {
   constructor() {
     this.board = new Board();
