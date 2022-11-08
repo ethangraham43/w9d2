@@ -2,6 +2,7 @@ class View {
   constructor(game, el) {
     this.el = el
     this.game = game
+    this.setupBoard()
   }
 
   setupBoard() {
@@ -9,7 +10,7 @@ class View {
     for (let i=0; i<3; i++) {
       for (let j=0; j<3; j++) {
         const box = document.createElement("li");
-        box.dataset.pos=JSON.stringify([i,j]);
+        box.dataset.pos = JSON.stringify([i, j]);
         grid.append(box);
       }
     }

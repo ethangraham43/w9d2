@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\") \nconst Game = __webpack_require__(/*! ../../../../../../../ttt_node/game.js */ \"./ttt_node/game.js\") \n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // Your code here\n});\n\nconst newGame = new Game()\nconst newView = new View()\n\nnewView.setupBoard()\n\n//# sourceURL=webpack://skeleton-2/./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\") \nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const newGame = new Game()\n  const ttt = document.querySelector(\".ttt\")\n  const newView = new View(newGame, ttt)\n\n  // Your code here\n});\n\n\n//# sourceURL=webpack://skeleton-2/./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, el) {\n    this.el = el\n    this.game = game\n  }\n\n  setupBoard() {\n    const grid = document.createElement(\"ul\"); \n    for (let i=0; i<3; i++) {\n      for (let j=0; j<3; j++) {\n        const box = document.createElement(\"li\");\n        box.dataset.pos=JSON.stringify([i,j]);\n        grid.append(box);\n      }\n    }\n    this.el.append(grid)\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack://skeleton-2/./src/ttt-view.js?");
+eval("class View {\n  constructor(game, el) {\n    this.el = el\n    this.game = game\n    this.setupBoard()\n  }\n\n  setupBoard() {\n    const grid = document.createElement(\"ul\"); \n    for (let i=0; i<3; i++) {\n      for (let j=0; j<3; j++) {\n        const box = document.createElement(\"li\");\n        box.dataset.pos = JSON.stringify([i, j]);\n        grid.append(box);\n      }\n    }\n    this.el.append(grid)\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack://skeleton-2/./src/ttt-view.js?");
 
 /***/ }),
 
