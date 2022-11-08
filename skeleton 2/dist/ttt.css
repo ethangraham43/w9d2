@@ -26,3 +26,35 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.x, .o {
+    background: white;
+}
+
+.x:after {
+    content: "x";
+}
+
+.o:after {
+    content: "o";
+}
+
+.x:after, .o:after {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+
+.game-over li{
+    color: red;
+}
+
+.winner-x .x, .winner-o .x {
+    color: white;
+    background: green;
+}
+
+figcaption {
+    font-size: 20px;
+}

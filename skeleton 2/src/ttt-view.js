@@ -3,6 +3,8 @@ class View {
     this.el = el
     this.game = game
     this.setupBoard()
+    this.handleClick = this.handleClick.bind(this)
+    this.bindEvents()
   }
 
   setupBoard() {
@@ -16,12 +18,45 @@ class View {
     }
     this.el.append(grid)
   }
+
+  handleClick(e) {
+    const target = e.target
+    if ("LI" === target.nodeName) {
+      this.makeMove(target)
+    }
+  }
   
-  bindEvents() {}
+  bindEvents() {
+    this.el.addEventListener("click", this.handleClick)
+  }
 
-  handleClick(e) {}
+  makeMove(square) {
+    const position = JSON.parse(square.dataset.pos);
+    const player = this.game.currentPlayer;
+    try{this.game.playMove(position)}
+    catch(error){
+      alert(error.msg)
+    }
+    square.classList.add(player)
+    if (this.game.isOver()) {
+      this.handleGameOver()
+    }
 
-  makeMove(square) {}
+  }
+
+  handleGameOver() {
+    this.el.removeEventListener("click", this.handleClick)
+    this.el.classList.add("game-over")
+    const winner = this.game.winner()
+    this.el.classList.add(`winner-${winner}`)
+    const message = document.createElement("figcaption")
+    if (winner) {
+      message.append(`you win, ${winner}!`)
+    } else {
+      message.append("It's a draw!")
+    }
+    this.el.append(message)
+  }
 
 }
 
